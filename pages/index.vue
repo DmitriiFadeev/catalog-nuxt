@@ -31,10 +31,7 @@ import Search from '../components/Search.vue';
 import SearchFront from '../components/SearchFront.vue';
 import Catalog from '../components/Catalog.vue';
 
-interface Item {
-  id: number;
-  name: string;
-}
+import {Item} from '../common/interfaces/FetchData';
 
 export default Vue.extend({
   components: {
@@ -85,15 +82,13 @@ export default Vue.extend({
       this.items = this.copyItems
 
       if (this.query) {
-        this.items = this.items.filter(item => {
-          for (const itemKey in item) {
+        this.items = this.items.filter((item: Item) => {
+          for (let itemKey in item) {
             if (item[itemKey].includes(query)) {
               return item
             }
           }
         })
-      } else {
-        this.items = this.copyItems
       }
     },
 

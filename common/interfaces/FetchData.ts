@@ -4,7 +4,7 @@ export interface FetchData {
   Response: string
 }
 
-export interface Item {
+export interface Item extends Record<string, string> {
   Poster: string
   Title: string
   Type: string
